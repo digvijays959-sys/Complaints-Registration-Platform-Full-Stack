@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints Registration Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation (Dynamic) -->
+        <nav id="main-nav" class="hidden">
+            <div class="nav-content">
+                <span class="logo">ComplaintHub</span>
+                <div class="nav-links">
+                    <button id="nav-complaints" class="nav-link hidden">My Complaints</button>
+                    <button id="nav-admin" class="nav-link hidden">Admin Dashboard</button>
+                    <button id="logout-btn" class="btn btn-outline">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container">
+            <!-- Auth Sections -->
+            <section id="register-section" class="card hidden">
+                <h2>Create Account</h2>
+                <div id="register-step-1">
+                    <div class="form-group">
+                        <label for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">Email Address</label>
+                        <input type="email" id="reg-email" placeholder="john@example.com">
+                    </div>
+                    <button id="send-otp-btn" class="btn btn-primary">Send OTP</button>
+                    <p class="auth-link">Already have an account? <a href="#" id="goto-login">Login</a></p>
+                </div>
+
+                <div id="register-step-2" class="hidden">
+                    <p>We've sent a 6-digit code to your email.</p>
+                    <div class="form-group">
+                        <label for="reg-otp">Enter OTP</label>
+                        <input type="text" id="reg-otp" maxlength="6" placeholder="123456">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" placeholder="••••••••">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm-password">Confirm Password</label>
+                        <input type="password" id="reg-confirm-password" placeholder="••••••••">
+                    </div>
+                    <button id="verify-reg-btn" class="btn btn-primary">Complete Registration</button>
+                </div>
+            </section>
+
+            <section id="login-section" class="card hidden">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••">
+                </div>
+                <button id="login-btn" class="btn btn-primary">Login</button>
+                <p class="auth-link">Don't have an account? <a href="#" id="goto-register">Register</a></p>
+            </section>
+
+            <!-- User Sections -->
+            <section id="submit-complaint-section" class="card hidden">
+                <h2>Submit a Complaint</h2>
+                <div id="complaint-step-1">
+                    <div class="form-group">
+                        <label for="complaint-text">What's the issue?</label>
+                        <textarea id="complaint-text" rows="4" placeholder="Describe your complaint in detail..."></textarea>
+                    </div>
+                    <button id="get-ai-q-btn" class="btn btn-primary">Continue</button>
+                </div>
+
+                <div id="complaint-step-2" class="hidden">
+                    <div class="ai-box">
+                        <p class="ai-label">AI Follow-up Question:</p>
+                        <p id="ai-question-display" class="ai-question"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-answer">Your Answer</label>
+                        <textarea id="user-answer" rows="3" placeholder="Provide more details here..."></textarea>
+                    </div>
+                    <button id="submit-final-complaint-btn" class="btn btn-primary">Submit Complaint</button>
+                </div>
+            </section>
+
+            <section id="my-complaints-section" class="hidden">
+                <div class="section-header">
+                    <h2>My Complaints</h2>
+                    <button id="goto-submit-btn" class="btn btn-primary">New Complaint</button>
+                </div>
+                <div id="my-complaints-list" class="complaints-list">
+                    <!-- Complaints will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Admin Section -->
+            <section id="admin-section" class="hidden">
+                <h2>Admin Dashboard</h2>
+                <p>All user complaints are listed below.</p>
+                <div id="admin-complaints-list" class="complaints-list">
+                    <!-- All complaints will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Error/Success Toasts -->
+            <div id="toast" class="toast hidden"></div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
